@@ -54,6 +54,8 @@ router.get('/players/:id', readPlayer);
 router.put('/players/:id', updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
+//hw3
+router.get('players/:badGame', zero);
 
 app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
@@ -120,4 +122,12 @@ function deletePlayer(req, res, next) {
     .catch((err) => {
       next(err);
     });
+}
+
+//hw3
+function zero(req, res, next) {
+  db.many('SELECT name FROM Player, PlayerGame, Game WHERE Player.ID=PlayerGame.playerID AND score=0')
+    .then((data) => {res.send(data);})
+    .catch((err) => {
+      next(err);})
 }
