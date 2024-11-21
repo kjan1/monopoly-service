@@ -126,7 +126,7 @@ function deletePlayer(req, res, next) {
 
 //hw3
 function zero(req, res, next) {
-  db.many('SELECT name FROM Player, PlayerGame, Game WHERE Player.ID=PlayerGame.playerID AND score=0')
+  db.many('SELECT name FROM Player, PlayerGame, Game WHERE Player.ID=PlayerGame.playerID AND game.id = playergame.gameid AND score=0')
     .then((data) => {res.send(data);})
     .catch((err) => {
       next(err);})
