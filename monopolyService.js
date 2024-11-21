@@ -55,7 +55,7 @@ router.put('/players/:id', updatePlayer);
 router.post('/players', createPlayer);
 router.delete('/players/:id', deletePlayer);
 //hw3
-router.get('players/:badGame', zero);
+router.get('players/badGame', zero);
 
 app.use(router);
 app.listen(port, () => console.log(`Listening on port ${port}`));
